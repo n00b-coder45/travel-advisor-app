@@ -1,0 +1,74 @@
+import java.util.Scanner;
+
+class Contributor {
+    private int id;
+    private String emailId;
+    private String name;
+    private String password;
+
+    // Constructor
+    public Contributor(int id, String emailId, String name, String password) {
+        this.id = id;
+        this.emailId = emailId;
+        this.name = name;
+        this.password = password;
+    }
+
+    // Method to take input from the user and set values for the object
+    public void input() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter Contributor ID: ");
+        this.id = scanner.nextInt();
+        scanner.nextLine(); // Consume the newline
+        System.out.println("Enter Email ID: ");
+        this.emailId = scanner.nextLine();
+        System.out.println("Enter Name: ");
+        this.name = scanner.nextLine();
+        System.out.println("Enter Password: ");
+        this.password = scanner.nextLine();
+    }
+
+    // Method to print Contributor information
+    public void print() {
+        System.out.println("Contributor ID: " + this.id);
+        System.out.println("Email ID: " + this.emailId);
+        System.out.println("Name: " + this.name);
+        System.out.println("Password: " + this.password);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Contributor contributor = null;
+
+        while (true) {
+            System.out.println("Menu:");
+            System.out.println("1. Add a new Contributor");
+            System.out.println("2. Print Contributor information");
+            System.out.println("3. Exit");
+            System.out.println("Enter your choice: ");
+
+            int choice = scanner.nextInt();
+
+            switch (choice) {
+                case 1:
+                    contributor = new Contributor(0, "", "", "");
+                    contributor.input();
+                    break;
+                case 2:
+                    if (contributor != null) {
+                        contributor.print();
+                    } else {
+                        System.out.println("No Contributor added yet.");
+                    }
+                    break;
+                case 3:
+                    System.out.println("Exiting program.");
+                    System.exit(0);
+                default:
+                    System.out.println("Invalid choice. Please select a valid option.");
+            }
+        }
+    }
+}
